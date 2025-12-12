@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: run-unit-tests-with-nose
+spec:
+  steps:
+    - name: run-nose-tests
+      image: python:3.10
+      script: |
+        #!/bin/sh
+        pip install --upgrade pip
+        pip install nose
+        echo "Running unit tests with nose..."
+        nosetests --verbose
